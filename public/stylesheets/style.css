@@ -1,0 +1,182 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.inputtext{
+	height: 20px;
+	width: 150px; 
+	font-size: 11px;
+}
+
+.loginButton .loginButtonHomepage{
+	font-size:11px;
+	font-family: helvetica, arial, sans-serif;
+	padding: 2px 6px;
+	background-position:  0 -49px;
+	background-color: #3b5998;
+	background: none;
+	color: White;
+}
+
+.loginpageText{
+	font-family:'Freight Sans', 'Helvetica Neue', 'Segoe UI', 'Malgun Gothic', Meiryo, 'Microsoft JhengHei', helvetica, arial, sans-serif !important;
+}
+
+.loginUL
+{
+    list-style-type: none;
+    display: inline;
+}
+
+.loginLI
+{
+    display: inline;
+}
+
+#search
+{
+  -moz-border-radius: 15px;
+ border-radius: 3px;
+    border:solid 1px black;
+    padding:5px;
+    border:none;
+}
+
+.wrapper {
+    border:1px solid #000;
+    display:inline-block;
+}
+
+
+._searchbox {
+    border:none;
+}
+
+.homepageButton{
+	background-color: Transparent;
+	background-repeat:no-repeat;
+	border: none;
+	cursor:pointer;
+	overflow: hidden;
+}
+
+.facebook_homepage_click:hover{
+	cursor: pointer; 
+	text-decoration: none;
+}
+
+.verticalLine {
+    border-left: thick solid #ff0000;
+}
+
+#newsfeed{
+	border: none;
+}
+
+.newsfeed_textarea{
+	resize: none;
+}
+
+.postButtonNewsfeed{
+	background-color: #3b5998;
+	border: none;
+	color: White;
+}
+
+.signupButton{
+	background-color: #3b5998;
+	border: none;
+	color: White;
+}
+
+.homepage_left_ul{
+	 list-style-type: none;
+   	 display: inline;
+   	 font-size: 13px;
+   	 margin:0;
+   	 padding:0px;
+}
+
+.homepage_main{
+	height: auto;
+	background: white;
+	width: 500px;
+}
+
+.groups{
+	background:white;
+	width:auto;
+	border: solid 1px;
+} 
+
+.group_members_table{
+	margin-bottom: 0px;
+	width: 100%;
+	max-width: 100%;
+	background-color: transparent;
+	border-spacing: 0;
+	border-collapse: collapse;
+	    border-top-width: 2px;
+    border-right-width: 2px;
+    border-bottom-width: 2px;
+    border-left-width: 2px;
+    display: table;
+        font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+        font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+            border-color: grey;
+}
+
+.homepage_lefttab{
+	border: 2px;
+	width: 100px;
+	margin: 4px;
+}
+
+.homepage_lefttab tr{
+	padding-top: 5em;
+	padding-bottom: 5em;
+}
+
+.homepage_lefttab td{
+	vertical-align: bottom;
+}
+
+.homepage_lefttab label{
+	font-size: 12px;
+	font-weight: normal;
+}
+
+.homepage_lefttab a{
+	color: black;
+}
+
+.horizontalLine{
+	clear:both;
+	width:100%;
+	background-color:#d1d1d1;
+	height:1px;
+	margin-top:10px;
+	margin-bottom:10px;
+}
+
+.centerScreen_loginAttempt{
+	position: absolute;
+	height: 375px;
+	left: 400px;
+	right: 400px;
+	top: 175px;
+	text-align: left;
+	margin-bottom: 3px;
+	padding: 0px;
+	font-family: helvetica, arial, sans-serif;;
+	font-size: 16px;
+	font-weight: normal;
+	background: #F5F5F5;
+}

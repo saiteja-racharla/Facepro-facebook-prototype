@@ -1,0 +1,127 @@
+<div class="col-sm-9">
+<h1>Welcome to Facepro group chat!!</h1>
+<h2>Type in your message and click submit</h2>
+	<nav class="navbar navbar-default" style="width:600px; background-color: white">
+	<div id="chat"></div>
+	</nav>
+<form id="send-message">
+	<input type="text" class="form-control" id="message" placeholder="enter message"></input>
+	<input type="submit" class="btn btn-success" value="Send"></input>
+</form>
+
+<!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Type Message</p></h4>
+          
+        </div>
+        <form id="sendPersonalSubmit">
+        <div class="modal-body">
+        	Recipient:<input type="Text" name="personId1" id="personId1" disabled class="form-control"></input>
+        	Message:
+          <textarea class="form-control" id="personalMessage"></textarea>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          <input type="submit" value="Send" class="btn btn-success"></input>
+        </div>
+        </form>
+      </div>
+      
+    </div>
+  </div>
+
+<!-- Modal 2 -->
+  <div class="modal fade" id="myModal2" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Message received</p></h4>
+          
+        </div>
+        <form id="sendPersonalSubmit">
+        <div class="modal-body">
+        	Sender:<input type="Text" name="sender" id="sender" disabled class="form-control"></input>
+        	Message:
+          <textarea class="form-control" id="personalMessageReceived"></textarea>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+        </form>
+      </div>
+      
+    </div>
+  </div>
+
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+	jQuery(function($){
+		var socket = io.connect();
+		var $messageForm = $("#send-message");
+		var $user_name = $("#user_name");
+		var $messageBox = $("#message");
+		var $chat=$('#chat');
+		var $usersOnline=$("#usersOnline");
+		var $personalPerson = $("personId").val();
+		var $sendPersonalSubmit = $("#sendPersonalSubmit");
+		
+		$('#myModal').on('show.bs.modal', function(e) {
+		    var personId = $(e.relatedTarget).data('person-id');
+		    $(e.currentTarget).find('input[name="personId1"]').val(personId);
+		});
+		socket.emit('getUsersOnline',$("#user_name").val(),function(data){
+			$usersOnline.append('<span class="">'+'</span><br/>');
+		});
+		$messageForm.submit(function(e){
+			e.preventDefault();
+			socket.emit('send message',$("#user_name").val()+":"+$messageBox.val(),function(data){
+				$chat.append('<span class="error"><b>'+data.name+'</span><br/>');
+			});
+			$messageBox.val('');
+		});
+		
+		$sendPersonalSubmit.submit(function(e){
+			e.preventDefault();
+			alert($("#personId1").val()+":"+$("#personalMessage").val());
+			socket.emit('send personal message',$("#personId1").val()+":"+$("#personalMessage").val(),function(data){
+				$chat.append('<span class="error"><b>'+data.name+'</span><br/>');
+			});
+			$messageBox.val('');
+		});
+		
+		socket.on('new message',function(data){
+			$chat.append("<b>"+data.name+"</b>:"+data.msg+"<br/>");
+		});
+		
+		socket.on('new message personal',function(data){
+			$('#myModal2').modal(); 
+			$('#sender').val(data.name);
+			$('#personalMessageReceived').val(data.msg);
+		});
+		
+		socket.on('usernames',function(data){
+			var html="";
+			for(var i=0;i<data.length;i++)
+				html+='<button href="#myModal" data-toggle="modal" data-person-id='+data[i]+'>'+data[i]+"</button><br/>";
+			$usersOnline.html(html);
+		});
+	});
+</script>
+<script>
+	
+</script>
+</div>
+<div class="col-sm-3" style="margin-top:10px">
+	<nav class="navbar navbar-default">
+	<h3>Users Online</h3>
+	<div id="usersOnline"></div>
+	</nav>
+</div>

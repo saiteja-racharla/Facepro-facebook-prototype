@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel='stylesheet' href='/stylesheets/style.css' />
+	<link rel="stylesheet"href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+	<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+	<meta http-equiv="Pragma" content="no-cache" />
+	<meta http-equiv="Expires" content="0" />
+	<script src="angularjs/login.js"></script>
+	<title>Edit Profile</title>
+</head>
+<body ng-app="Facepro">
+	<nav class="navbar navbar-default" style=" background-color: #3b5998;margin-bottom:0px;">
+		<div class="col-md-1">
+				
+		</div>
+		<div class="col-md-10">
+			<label style="margin-top: 0px;font-size:28px;color:white;float:left" class="loginpageText"><a href="/homepage" style="color:white" class="facepro_homepage_click">facepro</a></label>
+				<div class="wrapper" style="float:left;margin-top:10px">
+				<form action="searchUser" method="POST">
+				<input type="text" name="search" id="search" ng-model="search" style="width:370px;height:20px"/>
+				<button class="loginpageText _searchbox"><img src="/images/login_page_images/search.png" width="15" height="15"></img></button>
+				</form>
+				</div>
+				<div>
+					<label style="font-weight:normal;margin-left: 150px;margin-top: 10px;font-size:16px;color:white;float:left" class="loginpageText"><a href="/viewProfile" style="color:white"><input type="button" value="<%=username%>" class="homepageButton"/></a>&nbsp;&nbsp;&nbsp;</label>
+				</div>
+				<div>
+					<label style="font-weight:normal;margin-top: 10px;font-size:16px;color:white;float:left" class="loginpageText"><a href="/homepage" style="color:white"><input type="button" value="Home" class="homepageButton"/></a>&nbsp;&nbsp;</label>
+				</div>
+				<div style="float:left;margin-top: 8px;">
+					<table cell-padding="10" cell-spacing="10">
+						<tbody>
+							<tr><td><img src="/images/login_page_images/friends.png" width="33" height="31"></img></td><td></td>
+							<td><img src="/images/login_page_images/message.png" width="28" height="31"></img></td><td></td>
+							<td><img src="/images/login_page_images/notifications.png" width="28" height="31"></img></td>
+							<td>&nbsp;&nbsp;&nbsp;</td>
+							<td><img src="/images/login_page_images/privacy.png" width="15" height="18"></img>&nbsp;
+							</td>
+							<td>
+							
+							</td>
+							
+							
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div>
+					<form action="logout" method="post">
+							<label style="font-weight:normal;margin-top: 10px;font-size:16px;color:white;float:left" class="loginpageText"><input type="submit" value="Logout" class="homepageButton"/>&nbsp;&nbsp;</label>
+							</form>
+				</div>
+		</div>
+		<div class="col-md-1">
+		
+		</div>
+	</nav>
+	<nav>
+		<div class="col-md-1">
+		
+		</div>
+		<div class="col-md-7">
+			<div class="row" style="height: 200px; width: auto;">
+				<img src="/images/friends_wallpaper.jpg" height="200" width="795"></img>
+			</div>
+			<div class="row">
+				<nav class="navbar navbar-default">
+				  <div class="container-fluid">
+				    <div>
+				      <ul class="nav navbar-nav">
+				        <li class="active"><a href="/viewProfile">View Profile</a></li>
+				        <li><a href="/editProfile">About</a></li>
+				        <li><a href="/friends">Friends</a></li>
+				        <li><a href="/photos">Photos</a></li>
+				        <li class="dropdown">
+				          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">More <span class="caret"></span></a>
+				          <ul class="dropdown-menu">
+				            <li><a href="#">Videos</a></li>
+				            <li><a href="#">check-ins</a></li>
+				            <li><a href="#">Sports</a></li>
+				            <li><a href="#">Music</a></li>
+				            <li><a href="#">Movies</a></li>
+				            <li role="separator" class="divider"></li>
+				            <li><a href="#">Manage sections</a></li>
+				          </ul>
+				        </li>
+				      </ul>
+				    </div>
+				  </div>
+				</nav>
+			</div>
+			<div class="row">
+				<nav class="navbar navbar-default">
+					<div class="container-fluid">
+						<table style="margin:10px">
+						<tr><td><img src="/images/user_small.png"></img>&nbsp;&nbsp;&nbsp;</td>
+						<td><a href="/friends">Profile</a></td>
+						</table>
+					</div>
+					<div class="horizontalLine">
+					</div>
+					<div class="container-fluid">
+						<strong>Summary</strong>
+						<textarea id="summary" class="form-control" disabled><%= summary%></textarea><br/>
+						<strong>Work Summary</strong><br/>
+						<%for(var i=0;i<work.length;i++){%>
+							<input type="text" value="<%= work[i].work%>" class="form-control" disabled/><br/>
+							<%
+						}%>
+						<strong>Education</strong><br/>
+						<%for(var i=0;i<education.length;i++){%>
+							<input type="text" value="<%= education[i].education%>" class="form-control" disabled/><br/>
+							<%
+						}%>
+						<strong>Contact Information</strong><br/>
+						<%for(var i=0;i<contact.length;i++){%>
+							<input type="text" value="<%= contact[i].contact%>" class="form-control" disabled/><br/>
+							<%
+						}%>
+						<strong>Life Events</strong><br/>
+						<%for(var i=0;i<lifeevents.length;i++){%>
+							<input type="text" value="<%= lifeevents[i].lifeevents%>" class="form-control" disabled/><br/>
+							<%
+						}%>
+						<strong>Music</strong>
+						<input type="text" value="<%= music%>" class="form-control" disabled/><br/>
+						<strong>Shows</strong>
+						<input type="text" value="<%= shows%>" class="form-control" disabled/><br/>
+						<strong>Sports</strong>
+						<input type="text" value="<%= sports%>" class="form-control" disabled/><br/>
+						<a href="/editProfile"><input type="submit" value="Edit Profile" class="btn .btn-default"/></a>
+					</div>
+				</nav>
+			</div>
+		</div>
+		<div class="col-md-4">
+		
+		</div>
+	</nav>
+</body>
+</html>
